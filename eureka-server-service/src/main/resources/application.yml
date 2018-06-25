@@ -1,5 +1,4 @@
 spring :
-  profiles : local
   application :
            name : eureka-service
 server :
@@ -11,3 +10,16 @@ eureka :
      fetch-registry : false 
      service-url:
       defaultZone: http://localhost:8070/eureka      
+      
+      
+#logging: 
+ #  level: 
+  #    com:
+   #    terminology: 
+    #     controller: info
+   #pattern:       
+    #  console:%d{yyyy-mm-dd HH:mm:ss} - %msg%n
+     # file:%d{yyyy-mm-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n 
+   #path: logs 
+   
+   #file:   relative path of the project then it will generate logs in that path
