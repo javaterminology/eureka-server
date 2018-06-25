@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+%-5level - log level INFO 
+%logger{36} - it shows package name+class name and length of package name+ class name is 36 characters 
+%msg - it prints actual message ch.qos.logback.core.ConsoleAppender - it prints logs to console using this appender 
+%thread - name of thread %d - Date %n - new line 
+-->
+<configuration>
+	<property name="DEV_HOME" value="logs" />
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{dd-MM-yyyy HH:mm:ss} [%thread] %-5level %logger{36}.%M - %msg%n</pattern>
+		</layout>
+	</appender>
+	
+	<!-- <appender name="FILE_AUDIT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <file>${DEV_HOME}/debug.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">        
+        daily rollover
+        <fileNamePattern>${DEV_HOME}/archived/debug.%d{yyyy-MM-dd-HH-mm}.log</fileNamePattern>
+        keep 30 days' worth of history capped at 3GB total size
+        <maxHistory>30</maxHistory>
+        <maxFileSize>10MB</maxFileSize>
+    </rollingPolicy>
+    
+	<appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <file>${DEV_HOME}/debug.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">        
+        daily rollover
+        <fileNamePattern>${DEV_HOME}/archived/error.%d{yyyy-MM-dd-HH-mm}.log</fileNamePattern>
+        keep 30 days' worth of history capped at 3GB total size
+        <maxHistory>30</maxHistory>
+        <maxFileSize>10MB</maxFileSize>
+    </rollingPolicy>
+	 -->
+	<!-- Send logs to both console and file -->
+	<logger name="com.terminology.eureka.server" level="info" additivity="false">
+		<!-- <appender-ref ref="FILE_AUDIT"/> -->
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	
+	<!-- <root level="error">
+	    <appender-ref ref="FILE_ERROR"/>
+	</root> -->
+</configuration>
